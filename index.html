@@ -291,6 +291,13 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Variação para vídeos verticais (gravação de tela de celular) */
+        .video-facade-vertical {
+            aspect-ratio: 9 / 16;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
         /* Mockup gráfico no Preview para dar o feeling visual */
         .video-facade::after {
             content: '';
@@ -601,9 +608,12 @@
         /* Seção Provas (Testimony) */
         .testimony-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .proof-card {
@@ -1165,7 +1175,7 @@
                 <div class="proof-card">
                     <div class="proof-media">
                         <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_33_15.mp4 -->
-                        <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197173999" style="border-radius: 0;" role="button" aria-label="Assistir depoimento de cliente satisfeito">
+                        <div class="video-facade video-facade-vertical" data-video-src="https://player.vimeo.com/video/1197173999" role="button" aria-label="Assistir depoimento de cliente satisfeito">
                             <div class="water-wave-mock"></div>
                             <div class="video-facade-bg">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1214,6 +1224,27 @@
                     <div class="proof-caption">
                         <p>Poço artesiano pronto jorrando água limpa e contínua (prova de que a água é boa, não salgada).</p>
                         <span>Poço Concluído</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="proof-card">
+                    <div class="proof-media">
+                        <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: perfuracao-noturna-65-a-100.mp4 -->
+                        <div class="video-facade video-facade-vertical" data-video-src="https://player.vimeo.com/video/1197173998" role="button" aria-label="Assistir vídeo da perfuração em andamento">
+                            <div class="water-wave-mock" style="animation-duration: 5s;"></div>
+                            <div class="video-facade-bg">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                <span style="font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em;">VER PERFURAÇÃO EM AÇÃO</span>
+                            </div>
+                            <button class="video-play-btn" style="width: 55px; height: 55px;" aria-label="Play">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="proof-caption">
+                        <p>Perfuração em andamento no ponto indicado pelo estudo, com forte vazão de água.</p>
+                        <span>Perfuração em Ação</span>
                     </div>
                 </div>
             </div>
