@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaprospec | Prospecção de Água Subterrânea na Bahia</title>
+    <meta name="description" content="Descubra onde tem água na sua terra antes de gastar com a perfuração do poço artesiano. Estudo geofísico com 95% de acerto em toda a Bahia.">
+    
+    <!-- Favicon Oficial -->
+    <!-- ARQUIVO PARA IDENTIFICAÇÃO: logo_size.jpg (apenas o símbolo, o círculo em pincelada estilo enso) -->
+    <link rel="icon" href="logo_size.jpg" type="image/jpeg">
+
+    <!-- Otimização de Fontes (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1396D4;
+            --primary-dark: #0f7cb0;
+            --secondary: #1E3C6E;
+            --secondary-dark: #122544;
+            --black: #000000;
+            --white: #FFFFFF;
+            --off-white: #F6F7F9;
+            --whatsapp: #25D366;
+            --whatsapp-hover: #1FAA52;
+            --text-dark: #2C3E50;
+            --text-muted: #64748B;
+            
+            /* Escala de Z-Index */
+            --z-back: -1;
+            --z-base: 1;
+            --z-card-badge: 10;
+            --z-interactive: 20;
+            --z-floating: 50;
+            --z-header: 100;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            color: var(--secondary);
+            font-weight: 800;
+            line-height: 1.25;
+        }
+
+        p {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            max-width: 70ch; /* Comprimento de linha ideal de leitura */
+        }
+
+        strong {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Foco de Acessibilidade Padrão para Teclado (WCAG) */
+        a:focus-visible, 
+        button:focus-visible, 
+        .video-facade:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        /* Botão de WhatsApp de alta conversão */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.15rem;
+            padding: 20px 40px;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            min-height: 48px; /* Garantia de Touch Target */
+        }
+
+        .btn:hover {
+            background-color: var(--whatsapp-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(31, 170, 82, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .btn-sm {
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Indicador comercial verde e honesto de resposta rápida */
+        .commercial-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #25D366;
+            margin-top: 15px;
+            background-color: rgba(37, 211, 102, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            user-select: none;
+        }
+
+        .commercial-indicator .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #25D366;
+            border-radius: 50%;
+            animation: pulse-dot-anim 2s infinite;
+        }
+
+        @keyframes pulse-dot-anim {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(37, 211, 102, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Header Fixo Ultra-leve */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: var(--z-header);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+            height: 90px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            height: 75px;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-link {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 170px 0 90px 0;
+            background: linear-gradient(135deg, #1E3C6E 0%, #0F2344 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        /* Elemento de fundo geométrico suave sem travar performance */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(19,150,212,0.15) 0%, rgba(30,60,110,0) 70%);
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: var(--z-base);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: var(--z-interactive);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 2.8rem;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #E2E8F0;
+            margin-bottom: 30px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .support-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: #94A3B8;
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .support-line svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* Video Facade (Lite Embed Technique) */
+        .video-container {
+            position: relative;
+            z-index: var(--z-interactive);
+        }
+
+        .video-facade {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, #0f1c3f 0%, #1e3c6e 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Mockup gráfico no Preview para dar o feeling visual */
+        .video-facade::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(15,28,63,0.7) 0%, rgba(30,60,110,0.2) 100%);
+            z-index: var(--z-base);
+        }
+
+        .video-facade-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Efeito de Ondas d'água no fundo do vídeo mockup */
+        .water-wave-mock {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            background-image: radial-gradient(circle at 50% 50%, transparent 40%, var(--primary) 41%, transparent 45%);
+            background-size: 40px 40px;
+            animation: ripple 6s infinite linear;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: var(--z-card-badge);
+            box-shadow: 0 8px 25px rgba(19, 150, 212, 0.5);
+        }
+
+        .video-facade:hover .video-play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: var(--white);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+        }
+
+        .video-facade:hover .video-play-btn svg {
+            fill: var(--secondary);
+        }
+
+        .video-play-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--white);
+            margin-left: 6px;
+            transition: fill 0.3s;
+        }
+
+        .video-facade iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            z-index: var(--z-interactive);
+        }
+
+        /* Faixa de Números (Ticker) */
+        .numbers-banner {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 24px 0;
+            box-shadow: 0 4px 20px rgba(19, 150, 212, 0.25);
+            position: relative;
+            z-index: var(--z-interactive);
+            user-select: none;
+        }
+
+        .numbers-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .number-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .number-item .num {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .number-item .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Layout Geral Seções */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-light {
+            background-color: var(--off-white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Section Problem & Amplify */
+        .card-problem {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .problem-text, .amplify-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        .problem-text p, .amplify-text p {
+            margin-bottom: 24px;
+        }
+
+        .problem-text p:last-child, .amplify-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-danger {
+            border-left: 5px solid #EF4444;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #B91C1C;
+        }
+
+        /* Cards do Método (Solution) */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 70px;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-top: 6px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(19, 150, 212, 0.1);
+        }
+
+        .step-badge {
+            position: absolute;
+            top: -25px;
+            left: 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(19, 150, 212, 0.3);
+            z-index: var(--z-card-badge);
+        }
+
+        .step-card h3 {
+            font-size: 1.35rem;
+            color: var(--secondary);
+            margin: 10px 0 15px 0;
+        }
+
+        .step-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Bloco Depoimento Ancorado na Solução */
+        .solution-testimonial {
+            background: linear-gradient(135deg, #1E3C6E 0%, #152E56 100%);
+            border-radius: 24px;
+            padding: 50px;
+            color: var(--white);
+            box-shadow: 0 15px 35px rgba(30, 60, 110, 0.25);
+            margin-top: 50px;
+        }
+
+        .sol-test-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .sol-test-content blockquote {
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .sol-test-content blockquote::before {
+            content: '“';
+            font-size: 5rem;
+            position: absolute;
+            left: -35px;
+            top: -40px;
+            color: rgba(19, 150, 212, 0.3);
+            font-family: serif;
+        }
+
+        .sol-test-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sol-test-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .sol-test-author-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .sol-test-author-info p {
+            font-size: 0.9rem;
+            color: #94A3B8;
+        }
+
+        /* Seção Provas (Testimony) */
+        .testimony-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .proof-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .proof-media {
+            width: 100%;
+            background-color: #0f1c3f;
+            overflow: hidden;
+        }
+
+        .proof-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .proof-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #E5DDD5; /* Tom padrão cinza do fundo do WhatsApp no print */
+        }
+
+        .proof-caption {
+            padding: 24px;
+            background-color: var(--white);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .proof-caption p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .proof-caption span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .numbers-subline {
+            text-align: center;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.15rem;
+            border-top: 2px solid #E2E8F0;
+            padding-top: 40px;
+            margin-top: 40px;
+            user-select: none;
+        }
+
+        /* Oferta / Garantia */
+        .offer-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .offer-intro {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .offer-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .offer-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            gap: 16px;
+        }
+
+        .offer-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+            margin-top: 4px;
+        }
+
+        .offer-item h4 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .offer-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .guarantee-box {
+            background: linear-gradient(135deg, #FFFDF5 0%, #FFF9E6 100%);
+            border: 2px dashed #E29E21;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 10px 30px rgba(226, 158, 33, 0.08);
+        }
+
+        .guarantee-badge {
+            background-color: #E29E21;
+            color: var(--white);
+            min-width: 120px;
+            height: 56px;
+            padding: 0 22px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(226, 158, 33, 0.3);
+            user-select: none;
+        }
+
+        .guarantee-box p {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #744210;
+            line-height: 1.6;
+        }
+
+        /* Seção Chamada de Resposta (CTA Final) */
+        .response {
+            background: linear-gradient(135deg, #1E3C6E 0%, #1396D4 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 110px 0;
+            position: relative;
+        }
+
+        .response h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .response p {
+            color: #F1F5F9;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-weight: 500;
+        }
+
+        .response .support-line {
+            justify-content: center;
+            margin-top: 25px;
+            color: #F1F5F9;
+            font-size: 1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0B1629;
+            color: #94A3B8;
+            padding: 80px 0 40px 0;
+            border-top: 1px solid #1E293B;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a, .footer-links span {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.2s;
+            min-height: 44px; /* Touch Target ideal para mobile */
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1E293B;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #64748B;
+            line-height: 1.5;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #475569;
+            text-align: center;
+        }
+
+        /* Botão Flutuante Permanente */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: var(--z-floating);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: var(--whatsapp-hover);
+            box-shadow: 0 10px 25px rgba(31, 170, 82, 0.5);
+        }
+
+        .floating-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .hero-left {
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sol-test-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .testimony-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offer-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .guarantee-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header .btn {
+                display: none;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-padding {
+                padding: 70px 0;
+            }
+
+            .card-problem {
+                padding: 30px 20px;
+            }
+
+            .number-item {
+                min-width: 130px;
+            }
+
+            .number-item .num {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Fixo -->
+    <header id="main-header">
+        <div class="container">
+            <a href="#" class="logo-link" aria-label="Aquaprospec Home">
+                <!-- ARQUIVO PARA IDENTIFICAÇÃO: logo_transparent_background.png (Logo azul + texto preto) -->
+                <img src="logo_transparent_background.png" alt="Aquaprospec" loading="eager" width="220" height="55" class="logo-img">
+            </a>
+            <a href="https://wa.me/5575981571007?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Aquaprospec%20e%20quero%20um%20or%C3%A7amento%20de%20estudo%20geof%C3%ADsico.%20Minha%20propriedade%20fica%20perto%20de%3A%20" class="btn btn-sm" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <h1>Descubra onde tem água na sua terra antes de gastar um centavo perfurando.</h1>
+                <p class="subtitle">Estudo geofísico com 95% de acerto. Se não encontrarmos água, você recebe metade do valor de volta. Atendemos produtores rurais e empresas em toda a Bahia.</p>
+                
+                <a href="https://wa.me/5575981571007?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Aquaprospec%20e%20quero%20um%20or%C3%A7amento%20de%20estudo%20geof%C3%ADsico.%20Minha%20propriedade%20fica%20perto%20de%3A%20" class="btn" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 12.008 0c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.062.96 11.435.96c-5.439 0-9.865 4.37-9.87 9.802 0 1.698.462 3.354 1.337 4.816l-1.012 3.698 3.797-.982z"/></svg>
+                    Falar com a Aquaprospec no WhatsApp
+                </a>
+
+                <div class="commercial-indicator">
+                    <span class="pulse-dot"></span>
+                    <span>Resposta rápida no horário comercial</span>
+                </div>
+
+                <div class="support-line">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span>+700 poços locados · método científico, não adivinhação</span>
+                </div>
+            </div>
+            <div class="video-container">
+                <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_23_50.mp4 -->
+                <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174010" role="button" aria-label="Assistir vídeo de demonstração da perfuratriz">
+                    <div class="water-wave-mock"></div>
+                    <div class="video-facade-bg">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 15px; opacity: 0.8;" aria-hidden="true">
+                            <path d="M12 2L2 22H22L12 2Z" stroke="#fff" stroke-width="2" stroke-linejoin="round" fill="rgba(19,150,212,0.4)"/>
+                            <path d="M12 18V10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <p style="color: #fff; font-weight: 700; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">ASSISTIR VÍDEO DA PERFURATRIZ</p>
+                        <span style="color: #94A3B8; font-size: 0.85rem; margin-top: 5px;">Veja a força da água subterrânea</span>
+                    </div>
+                    <button class="video-play-btn" aria-label="Play">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faixa de Números -->
+    <div class="numbers-banner">
+        <div class="container numbers-wrapper">
+            <div class="number-item">
+                <span class="num">95%</span>
+                <span class="label">de acerto</span>
+            </div>
+            <div class="number-item">
+                <span class="num">+700</span>
+                <span class="label">poços locados</span>
+            </div>
+            <div class="number-item">
+                <span class="num">50%</span>
+                <span class="label">garantia de volta*</span>
+            </div>
+            <div class="number-item">
+                <span class="num">100%</span>
+                <span class="label">da Bahia atendida</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Furar um poço sem estudo é apostar R$ 15, R$ 20 mil no escuro.</h2>
+            </div>
+            <div class="card-problem">
+                <div class="problem-text">
+                    <p>Você conhece a história. O vizinho furou, gastou uma fortuna e não veio água. Ou veio água salgada, que não serve pro gado nem pra plantação. Ou pior: contratou alguém que marcou um ponto qualquer, recebeu, e sumiu quando a perfuratriz chegou.</p>
+                    <div class="highlight-danger">
+                        "Água é o que mantém sua criação viva e sua lavoura de pé. Errar aqui não é só perder dinheiro, é ficar mais uma estação na mão da chuva."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amplify -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O barato que sai caríssimo.</h2>
+            </div>
+            <div class="card-problem">
+                <div class="amplify-text">
+                    <p>Quando alguém promete "achar água de graça" ou cobra uma pechincha, a conta vem depois: é o poço seco que você paga do próprio bolso. Economizar algumas centenas de reais na escolha do ponto, pra depois perder dezenas de milhares na perfuração errada, é o pior negócio do campo.</p>
+                    <p style="font-size: 1.3rem; text-align: center; font-weight: 700; margin-top: 20px; color: var(--secondary);">
+                        A pergunta certa não é "quanto custa o estudo?".<br>É "quanto custa furar no lugar errado?".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">A gente não chuta onde tem água. A gente mede.</h2>
+                <p class="section-subtitle">A Aquaprospec usa equipamentos geofísicos profissionais, eletrorresistivímetro e sonar geofísico, para ler o subsolo da sua propriedade e indicar o ponto exato de perfuração. Tudo com responsável Técnico em Geologia (CRT). Sem forquilha, sem pêndulo, sem adivinhação.</p>
+            </div>
+
+            <!-- Grid do Método (Passos) -->
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-badge">1</div>
+                    <h3>Prospecção da área</h3>
+                    <p>Mapeamos todo o terreno pra achar onde há água, não num ponto só, mas na área inteira.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">2</div>
+                    <h3>Medição eletrorresistiva</h3>
+                    <p>Nos melhores pontos, medimos profundidade, vazão provável e salinidade da água.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-badge">3</div>
+                    <h3>Locação do poço</h3>
+                    <p>Marcamos o ponto exato e atestamos a viabilidade. A partir daí, é só perfurar.</p>
+                </div>
+            </div>
+
+            <!-- Depoimento Zé Geraldo -->
+            <div class="solution-testimonial">
+                <div class="sol-test-grid">
+                    <div class="sol-test-content">
+                        <blockquote>"Deu mais ou menos como você falou e constatou lá. Perfuramos até 130 metros e deu bastante água, em torno de 7 mil litros por hora. A pretensão da gente era acima de 5 mil pra tocar a irrigação. Trabalho aprovado."</blockquote>
+                        <div class="sol-test-author">
+                            <div class="sol-test-avatar">ZG</div>
+                            <div class="sol-test-author-info">
+                                <h4>Zé Geraldo</h4>
+                                <p>Produtor Rural</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-container">
+                        <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_20_30.mp4 -->
+                        <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174011" role="button" aria-label="Assistir depoimento de Zé Geraldo">
+                            <div class="water-wave-mock" style="background-color: var(--primary);"></div>
+                            <div class="video-facade-bg">
+                                <svg width="50" height="50" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                <span style="font-weight: 700; font-size: 0.95rem; text-transform: uppercase;">Depoimento Zé Geraldo</span>
+                            </div>
+                            <button class="video-play-btn" style="width: 60px; height: 60px;" aria-label="Play">
+                                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimony (Seção de Prova) -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mais de 700 poços locados. 95% de acerto. E gente que viu a água chegar.</h2>
+            </div>
+
+            <div class="testimony-grid">
+                <!-- Card 1 -->
+                <div class="proof-card">
+                    <div class="proof-media">
+                        <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_33_15.mp4 -->
+                        <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197173999" style="border-radius: 0;" role="button" aria-label="Assistir depoimento de cliente satisfeito">
+                            <div class="water-wave-mock"></div>
+                            <div class="video-facade-bg">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                <span style="font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em;">OUVIR DEPOIMENTO DO CLIENTE</span>
+                            </div>
+                            <button class="video-play-btn" style="width: 55px; height: 55px;" aria-label="Play">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="proof-caption">
+                        <p>"Estou satisfeito, deu bastante água. A gente foi assertivo no seu estudo."</p>
+                        <span>Cliente Satisfeito</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="proof-card">
+                    <div class="proof-media">
+                        <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: print-genildo-15mil-litros.jpeg -->
+                        <div class="proof-image-wrapper">
+                            <img src="print-genildo-15mil-litros.jpeg" alt="Print de conversa do cliente Genildo comemorando o resultado do poço, com 15 mil litros" loading="lazy" width="400" height="500">
+                        </div>
+                    </div>
+                    <div class="proof-caption">
+                        <p>Print real do cliente Genildo comemorando o resultado.</p>
+                        <span>Genildo</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="proof-card">
+                    <div class="proof-media">
+                        <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_39_14.mp4 (versão com marca: WhatsApp_Video_2026-05-28_at_17_34_42.mp4) -->
+                        <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174000" style="border-radius: 0;" role="button" aria-label="Assistir vídeo do poço jorrando água">
+                            <div class="water-wave-mock" style="animation-duration: 4s;"></div>
+                            <div class="video-facade-bg">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                                <span style="font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em;">VER POÇO JORRANDO</span>
+                            </div>
+                            <button class="video-play-btn" style="width: 55px; height: 55px;" aria-label="Play">
+                                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px;" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="proof-caption">
+                        <p>Poço artesiano pronto jorrando água limpa e contínua (prova de que a água é boa, não salgada).</p>
+                        <span>Poço Concluído</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="numbers-subline">
+                95% de acerto nas locações · +700 poços locados · Atendimento em toda a Bahia · Responsável Técnico em Geologia (CRT)
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Você não fica sozinho do estudo até a água jorrar.</h2>
+                <p class="section-subtitle">Acompanhamos você em cada etapa para garantir o sucesso da sua obra subterrânea.</p>
+            </div>
+
+            <div class="offer-wrapper">
+                <p class="offer-intro">Diferente de quem marca um ponto e desaparece, a Aquaprospec acompanha o processo inteiro:</p>
+                
+                <div class="offer-list">
+                    <div class="offer-item">
+                        <svg class="offer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <div>
+                            <h4>Laudo Completo</h4>
+                            <p>Estudo geofísico completo e laudo técnico detalhado do ponto ideal.</p>
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <svg class="offer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <div>
+                            <h4>Intermediação</h4>
+                            <p>A gente conecta você à perfuração, sem você ter que caçar outra empresa no mercado.</p>
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <svg class="offer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <div>
+                            <h4>Regularização</h4>
+                            <p>Tratamos de outorga e licenciamento (INEMA) para manter seu poço regularizado e sem dor de cabeça.</p>
+                        </div>
+                    </div>
+                    <div class="offer-item">
+                        <svg class="offer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <div>
+                            <h4>Orçamento sob medida</h4>
+                            <p>Cada propriedade é única. Você recebe um orçamento personalizado conforme a sua região e a sua necessidade.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guarantee-box">
+                    <div class="guarantee-badge">Garantia</div>
+                    <p>E a garantia que ninguém no mercado te dá: Se a prospecção não encontrar água, você recebe 50% do valor de volta. A gente assume o risco junto com você. É o que dá pra fazer quando se acerta 95% das vezes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Response (CTA Final) -->
+    <section class="section-padding response">
+        <div class="container">
+            <h2>Antes de chamar a perfuratriz, descubra onde está a água.</h2>
+            <p>Mande uma mensagem pra Aquaprospec no WhatsApp, conte da sua propriedade e da sua região. Você recebe o orçamento do estudo e tira todas as suas dúvidas, sem compromisso.</p>
+            
+            <a href="https://wa.me/5575981571007?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Aquaprospec%20e%20quero%20um%20or%C3%A7amento%20de%20estudo%20geof%C3%ADsico.%20Minha%20propriedade%20fica%20perto%20de%3A%20" class="btn" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 12.008 0c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.062.96 11.435.96c-5.439 0-9.865 4.37-9.87 9.802 0 1.698.462 3.354 1.337 4.816l-1.012 3.698 3.797-.982z"/></svg>
+                Quero saber onde tem água na minha terra
+            </a>
+
+            <div class="commercial-indicator" style="background-color: rgba(255,255,255,0.15); color: #fff; margin-top: 20px;">
+                <span class="pulse-dot" style="background-color: #fff;"></span>
+                <span>Resposta rápida no horário comercial</span>
+            </div>
+
+            <div class="support-line">
+                Atendimento direto rápido no WhatsApp · Toda a Bahia
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <!-- ARQUIVO PARA IDENTIFICAÇÃO: white_logo_transparent_background.png (Logo versão branca, fundo escuro) -->
+                    <img src="white_logo_transparent_background.png" alt="Aquaprospec" loading="lazy" width="220" height="55" class="logo-img">
+                    <p>Prospecção de água subterrânea com tecnologia geofísica em toda a Bahia.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Contato</div>
+                    <div class="footer-links">
+                        <a href="tel:+5575981571007">WhatsApp (75) 98157-1007</a>
+                        <a href="mailto:aquaprospec@outlook.com">aquaprospec@outlook.com</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-title">Redes Sociais</div>
+                    <div class="footer-links">
+                        <a href="https://instagram.com/aquaprospec" target="_blank" rel="noopener">Instagram @aquaprospec</a>
+                        <a href="https://www.facebook.com/aquaprospec" target="_blank" rel="noopener">Facebook</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="disclaimer">*Devolução de 50% do valor caso não seja encontrada água na prospecção.</p>
+                <p class="copyright">© 2026 Aquaprospec · aquaprospec.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante Permanente WhatsApp -->
+    <a href="https://wa.me/5575981571007?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Aquaprospec%20e%20quero%20um%20or%C3%A7amento%20de%20estudo%20geof%C3%ADsico.%20Minha%20propriedade%20fica%20perto%20de%3A%20" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Falar com a Aquaprospec no WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 12.008 0c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 1.981 14.062.96 11.435.96c-5.439 0-9.865 4.37-9.87 9.802 0 1.698.462 3.354 1.337 4.816l-1.012 3.698 3.797-.982z"/></svg>
+    </a>
+
+    <!-- Scripts Otimizados e Interativos para Simulação de Vídeo -->
+    <script>
+        // Efeito de rolagem para o Header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Configuração dos Video Facades (Para não pesar o carregamento inicial)
+        document.querySelectorAll('.video-facade').forEach(facade => {
+            facade.addEventListener('click', function() {
+                const videoSrc = this.getAttribute('data-video-src');
+                if (videoSrc && videoSrc !== 'INSIRA_LINK_DO_VIDEO_AQUI') {
+                    // Substitui dinamicamente pelo Iframe do Vimeo apenas no momento do clique, salvando banda e otimizando LCP/TTI
+                    this.innerHTML = `<iframe src="${videoSrc}?autoplay=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen></iframe>`;
+                } else {
+                    // Fallback visual amigável de simulação caso não haja link configurado
+                    this.innerHTML = `
+                        <div style="position: absolute; inset:0; background:#0B1629; display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff; padding: 20px; text-align:center;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" style="margin-bottom: 10px;" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M8 12h8m-4-4v8"/>
+                            </svg>
+                            <p style="font-weight:700; color:#fff;">Vídeo de Demonstração Solicitado</p>
+                            <p style="font-size:0.85rem; color:#94A3B8; margin-top:5px; text-align:center;">Para colocar o seu vídeo, basta editar o atributo "data-video-src" com o link real do Vimeo no arquivo index.html.</p>
+                        </div>
+                    `;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
