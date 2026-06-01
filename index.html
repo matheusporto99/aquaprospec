@@ -298,6 +298,16 @@
             margin: 0 auto;
         }
 
+        /* Capa (thumbnail) do vídeo */
+        .video-facade .video-cover {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
         /* Mockup gráfico no Preview para dar o feeling visual */
         .video-facade::after {
             content: '';
@@ -1032,6 +1042,7 @@
             <div class="video-container">
                 <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_23_50.mp4 -->
                 <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174010" role="button" aria-label="Assistir vídeo de demonstração da perfuratriz">
+                    <img class="video-cover" src="thumb-hero-perfuratriz.jpg" alt="" loading="lazy" width="640" height="352">
                     <div class="water-wave-mock"></div>
                     <div class="video-facade-bg">
                         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 15px; opacity: 0.8;" aria-hidden="true">
@@ -1148,6 +1159,7 @@
                     <div class="video-container">
                         <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_20_30.mp4 -->
                         <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174011" role="button" aria-label="Assistir depoimento de Zé Geraldo">
+                            <img class="video-cover" src="thumb-ze-geraldo.jpg" alt="" loading="lazy" width="464" height="512">
                             <div class="water-wave-mock" style="background-color: var(--primary);"></div>
                             <div class="video-facade-bg">
                                 <svg width="50" height="50" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1176,6 +1188,7 @@
                     <div class="proof-media">
                         <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_33_15.mp4 -->
                         <div class="video-facade video-facade-vertical" data-video-src="https://player.vimeo.com/video/1197173999" role="button" aria-label="Assistir depoimento de cliente satisfeito">
+                            <img class="video-cover" src="thumb-cliente.jpg" alt="" loading="lazy" width="384" height="848">
                             <div class="water-wave-mock"></div>
                             <div class="video-facade-bg">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1197,6 +1210,7 @@
                     <div class="proof-media">
                         <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: perfuracao-noturna-65-a-100.mp4 -->
                         <div class="video-facade video-facade-vertical" data-video-src="https://player.vimeo.com/video/1197173998" role="button" aria-label="Assistir vídeo da perfuração em andamento">
+                            <img class="video-cover" src="thumb-perfuracao.jpg" alt="" loading="lazy" width="384" height="848">
                             <div class="water-wave-mock" style="animation-duration: 5s;"></div>
                             <div class="video-facade-bg">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
@@ -1218,6 +1232,7 @@
                     <div class="proof-media">
                         <!-- ARQUIVO PARA IDENTIFICAÇÃO, NÃO EXIBIR O NOME NA PÁGINA: WhatsApp_Video_2026-05-28_at_17_39_14.mp4 (versão com marca: WhatsApp_Video_2026-05-28_at_17_34_42.mp4) -->
                         <div class="video-facade" data-video-src="https://player.vimeo.com/video/1197174000" style="border-radius: 0;" role="button" aria-label="Assistir vídeo do poço jorrando água">
+                            <img class="video-cover" src="thumb-poco.jpg" alt="" loading="lazy" width="800" height="446">
                             <div class="water-wave-mock" style="animation-duration: 4s;"></div>
                             <div class="video-facade-bg">
                                 <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
