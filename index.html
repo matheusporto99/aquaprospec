@@ -1133,7 +1133,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">A gente não chuta onde tem água. A gente mede.</h2>
-                <p class="section-subtitle">A Aquaprospec usa equipamentos geofísicos profissionais, eletrorresistivímetro e sonar geofísico, para ler o subsolo da sua propriedade e indicar o ponto exato de perfuração. Tudo com responsável Técnico em Geologia (CRT). Sem forquilha, sem pêndulo, sem adivinhação.</p>
+                <p class="section-subtitle">A Aquaprospec usa equipamentos geofísicos profissionais, eletrorresistivímetro e sonar geofísico, para ler o subsolo da sua propriedade e indicar o ponto exato de perfuração. Sem forquilha, sem pêndulo, sem adivinhação.</p>
             </div>
 
             <!-- Grid do Método (Passos) -->
@@ -1277,7 +1277,7 @@
             </div>
 
             <div class="numbers-subline">
-                95% de acerto nas locações · +700 poços locados · Atendimento em toda a Bahia · Responsável Técnico em Geologia (CRT)
+                95% de acerto nas locações · +700 poços locados · Atendimento em toda a Bahia
             </div>
         </div>
     </section>
@@ -1425,6 +1425,36 @@
                 }
             });
         });
+    </script>
+
+    <!-- Rastreamento confiável de clique no WhatsApp (especialmente no celular) -->
+    <script>
+        (function() {
+            // Seleciona todos os links que apontam para o WhatsApp
+            var whatsappLinks = document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+
+            whatsappLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    var destino = this.getAttribute('href');
+
+                    // Empurra o evento para o dataLayer (o GTM usa como gatilho)
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({ 'event': 'whatsapp_click' });
+
+                    // Detecta se é dispositivo móvel (onde o app "rouba" a navegação)
+                    var ehMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+
+                    if (ehMobile) {
+                        // No celular: segura o clique, deixa o rastreio disparar, e redireciona depois
+                        e.preventDefault();
+                        setTimeout(function() {
+                            window.location.href = destino;
+                        }, 400); // 400ms é tempo suficiente para a tag de rastreio sair
+                    }
+                    // No desktop: não faz nada, o link abre normalmente em nova aba (target="_blank")
+                });
+            });
+        })();
     </script>
 </body>
 </html>
